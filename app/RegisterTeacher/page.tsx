@@ -1,5 +1,7 @@
+"use client"
 import Image from "next/image";
 import logo from "public/logo.png";
+import Link from "next/link";
 
 
 export default function RegisterTeacher() {
@@ -26,9 +28,16 @@ export default function RegisterTeacher() {
 
 
                         <div
-                            className="w-[250px] col-span-2 rounded-[37px] bg-gradient-to-b from-[#A93ECE] to-[#CE3E3E] py-0.5 px-0.5 shadow-2x my-16">
+                            className="w-[250px] col-span-2 rounded-[37px] bg-gradient-to-b from-[#A93ECE] to-[#CE3E3E] py-0.5 px-0.5 shadow-2x my-12">
                             <button className="w-[246px]  font-aqum_2 text-[#7D3ECE] opacity-100 bg-[#FFFFFF] text-center rounded-[37px]">Зарегистрироваться</button>
                         </div>
+                        <Link href = "/TypeChooser">
+                            <div
+                                className="w-[250px] col-span-2 rounded-[37px] bg-gradient-to-b from-[#A93ECE] to-[#CE3E3E] py-0.5 px-0.5 shadow-2x ">
+                                <button className="w-[246px]  font-aqum_2 text-[#7D3ECE] opacity-100 bg-[#FFFFFF] text-center rounded-[37px]">Назад</button>
+                            </div>
+                        </Link>
+
 
 
 
@@ -37,6 +46,7 @@ export default function RegisterTeacher() {
 
 
                     </div>
+
 
                 </div>
                 <div className="background">

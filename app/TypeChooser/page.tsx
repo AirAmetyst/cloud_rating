@@ -1,8 +1,11 @@
+"use client"
 import Image from "next/image";
 import logo from "public/logo.png"
-import govservice from "public/govserv.png"
 import { PiStudentThin } from 'react-icons/pi'
 import { PiChalkboardTeacherThin } from 'react-icons/pi'
+import Link from 'next/link'
+import {Metadata} from "next";
+
 
 
 export default function AccountType() {
@@ -13,15 +16,21 @@ export default function AccountType() {
                     <Image className="w-[200px]"  src={logo} alt="logo_image"/>
                 </div>
 
-                <div className = "w-[500px] h-[100px] bg-white/70  rounded-[37px] border-solid border-[#7D3ECE] py-8 px-20 border-2 justify-between flex flex-row">
-                    <button className="bg-gradient-to-t from-[#9464D7] to-[#CE6B85] border-solid border-2 rounded-[37px] px-4 font-aqum_2 text-white flex flex-row">
-                        <PiStudentThin size={20} />
-                        Учитель
-                    </button>
-                    <button className="bg-gradient-to-t from-[#9464D7] to-[#CE6B85] border-solid border-2 rounded-[37px] px-2 font-aqum_2 text-white flex flex-row">
-                        <PiChalkboardTeacherThin size={20}/>
-                        Обучающийся
-                    </button>
+                <div className = "w-[300px] sm:w-[500px] h-[100px] bg-white/70  rounded-[37px] border-solid border-[#7D3ECE] py-4 sm:py-8 px-20 border-2 items-center justify-between flex flex-col sm:flex-row">
+                    <Link href="/RegisterTeacher">
+                        <button className="bg-gradient-to-t from-[#9464D7] to-[#CE6B85] border-solid border-2 rounded-[37px] px-4 font-aqum_2 text-white flex flex-row">
+                            <PiStudentThin size={20} />
+                            Учитель
+                        </button>
+                    </Link>
+
+                    <Link href="/RegisterStudent">
+                        <button className="bg-gradient-to-t from-[#9464D7] to-[#CE6B85] border-solid border-2 rounded-[37px] px-2 font-aqum_2 text-white flex flex-row">
+                            <PiChalkboardTeacherThin size={20}/>
+                            Обучающийся
+                        </button>
+                    </Link>
+
 
 
 
