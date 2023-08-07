@@ -1,30 +1,23 @@
-"use client"
+
 import Image from "next/image";
 import logo from "public/DashLogo.png"
 
 import govservice from "public/govserv.png"
+import Portfolio from "@/app/components/Portfolio";
+import {cookies} from "next/headers";
+import {getDimplomasById, getUserDataID} from "@/lib/Functions";
 
-export default function DashBoard() {
+export default async function PortfolioPage() {
+    const token = cookies().get("jwt").value
+    const userID = cookies().get("userID").value
+    const science = await getDimplomasById(userID, "Наука" ,token)
+    const art = await getDimplomasById(userID, "Искусство" ,token)
+    const sport = await getDimplomasById(userID, "Спорт" ,token)
+    const other = await getDimplomasById(userID, "Другое" ,token)
+
+
+
     return (
-        <div className = "max-w-[1920px] bg-white">
-            <div className="flex flex-row">
-
-
-                <div className= "w-[1100px] h-[1280px] ">
-                    <h1 className="font-aqum_2 text-3xl px-8 py-8">
-                        Портфолио
-                    </h1>
-                </div>
-                <div className= " h-[1280px] border-l-2 border-solid ">    </div>
-            </div>
-
-
-
-
-
-
-
-
-        </div>
+        <Portfolio science={science} art={art} sport={sport} other={other} />
     )
 }

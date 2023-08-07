@@ -7,6 +7,18 @@
     font-family: "aqum-2";   /*Can be any text*/
     src: local(Aqum_two_Classic_900) ,url(../public/Aqum_two_Classic_900.otf) format("opentype");
 }
+.pic{
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.small-pic{
+    object-fit: cover;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
 
 .txt_shad{
     background-image: linear-gradient(180deg, #A93ECE, #CE3E3E);

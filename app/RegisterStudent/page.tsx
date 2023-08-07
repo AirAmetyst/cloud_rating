@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "public/logo.png";
 import Link from "next/link";
 import {FormEvent, SetStateAction, useState} from "react";
-
+import {getUserData, Login, Register} from "@/lib/Functions";
 
 
 import {AiFillCaretDown,AiFillCaretUp} from "react-icons/ai"
@@ -11,11 +11,14 @@ import {AiFillCaretDown,AiFillCaretUp} from "react-icons/ai"
 import list from "@/public/list_of_cities.json";
 import schools from "@/public/list_of_school.json";
 
+import {useNavigate} from "react-router";
+
 
 export default function RegisterStudent() {
 
 
     var error_message = ""
+    const navigate = useNavigate();
     const [isCityOpen, setCityIsOpen] = useState(false)
     const [isSchoolOpen, setSchoolIsOpen] = useState(false)
     const [schoolsList, setSchoolsList] = useState([""])
@@ -79,37 +82,24 @@ export default function RegisterStudent() {
 
         setError("")
 
-
-
-
-        const reqBody = {
-            "city": city,
-            "dr" : 0,
-            "school":school,
-            "name":surename.value,
-            "phone_number":phone_number.value,
-            "email":email.value,
-            "password":password.value,
-            "profile":"123123",
-            "age":age.value,
-            "hobby":"science",
-            "short":short.value
-        }
-        console.log(reqBody)
-        const query = await fetch("http://192.168.0.104:5000/auth/registration",{
-            method: "POST",
-            credentials: "include",
-            headers: {"Content-Type":"application/json",
-            },
-
-            body: JSON.stringify(reqBody)
-        })
-        const responce = await JSON.parse(await query.text())
+        var responce = await Register(city, school,surename.value, password.value,email.value," ",short.value,phone_number.value,0," ",age.value)
         if(responce["status"] == false){
             setError(responce["success"])
             console.log(error)
+            return "error"
         }
-        console.log(responce)
+        var res = await Login(email.value, password.value);
+        console.log(res)
+        var data = await getUserData(email.value, res)
+        console.log(data)
+        navigate("/Hobbies",{state:{data}})
+
+
+
+
+
+
+
     }
 
 
